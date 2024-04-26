@@ -1,0 +1,32 @@
+fragment ActivityFields on Activity {
+  id
+  ownerId
+  createdAt
+  type
+  data
+  text
+  seen
+  _hidden @client
+}
+
+query GetMyActivities($pagination: CursorPaginationOptions) {
+  getMyActivities(pagination: $pagination) {
+    ...ActivityFields
+  }
+}
+
+query GetMyTicketActivities($pagination: CursorPaginationOptions) {
+  getMyTicketActivities(pagination: $pagination) {
+    ...ActivityFields
+  }
+}
+
+mutation SeeActivities {
+  seeActivities {
+    success
+  }
+}
+
+query HasUnseenActivities {
+  hasUnseenActivities
+}

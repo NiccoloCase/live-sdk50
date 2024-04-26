@@ -1,0 +1,45 @@
+fragment ReviewFields on Review {
+  id
+  rating
+  createdAt
+  comment
+  isVerified
+  user {
+    id
+    username
+    profilePicture {
+      url
+      blurhash
+    }
+  }
+  eventPreview {
+    id
+    title
+    image {
+      url
+      blurhash
+    }
+  }
+  _hidden @client
+}
+
+query GetReviewsByOrganizer($organizerId: ID!, $pagination: PaginationOptions) {
+  getReviewsByOrganizer(organizerId: $organizerId, pagination: $pagination) {
+    ...ReviewFields
+  }
+}
+
+mutation CreateReview($rating: Int!, $event: ID!, $comment: String) {
+  createReview(rating: $rating, event: $event, comment: $comment) {
+    review {
+      ...ReviewFields
+    }
+    errorCode
+  }
+}
+
+mutation RemoveReview($id: ID!) {
+  removeReview(id: $id) {
+    success
+  }
+}

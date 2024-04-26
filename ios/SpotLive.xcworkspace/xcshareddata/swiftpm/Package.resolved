@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "abseil-cpp-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bourdakos1/abseil-cpp-SwiftPM.git",
+      "state" : {
+        "branch" : "cxx17",
+        "revision" : "a7042563d167160f56e614cd1e2a32616510d9ec"
+      }
+    },
+    {
+      "identity" : "boringssl-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
+      "state" : {
+        "revision" : "734a8247442fde37df4364c21f6a0085b6a36728",
+        "version" : "0.7.2"
+      }
+    },
+    {
+      "identity" : "herald-for-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theheraldproject/herald-for-ios",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0c0c6c2754e30029ae45a7ce4134d9b8a44df821"
+      }
+    },
+    {
+      "identity" : "nearby",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Romoli-Gabriele/nearby",
+      "state" : {
+        "branch" : "FUNZIONA",
+        "revision" : "1c807a209af752a5761ab983e1b863e230bf9e27"
+      }
+    }
+  ],
+  "version" : 2
+}

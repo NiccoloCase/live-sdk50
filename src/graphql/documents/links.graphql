@@ -1,0 +1,49 @@
+fragment LinkFields on Link {
+  _id
+  refId
+  refType
+  clicksCount
+  url
+}
+
+query GetMyLinks {
+  getMyLinks {
+    ...LinkFields
+    eventRef {
+      id
+      title
+      image {
+        url
+        blurhash
+      }
+    }
+  }
+}
+
+query GetEventLinks($eventId: ID!, $pagination: CursorPaginationOptions) {
+  getEventLinks(eventId: $eventId, pagination: $pagination) {
+    ...LinkFields
+    owner {
+      id
+      username
+    }
+  }
+}
+
+query GetEventByLinkCode($code: String!) {
+  getEventByLinkCode(code: $code) {
+    ...EventFields
+  }
+}
+
+mutation GenerateEventLink($eventId: ID!) {
+  generateEventLink(eventId: $eventId) {
+    ...LinkFields
+  }
+}
+
+query GetLinkInfo($code: ID!) {
+  getLinkInfo(code: $code) {
+    ...LinkFields
+  }
+}

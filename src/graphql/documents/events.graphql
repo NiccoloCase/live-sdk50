@@ -1,0 +1,789 @@
+fragment EventFields on Event {
+  id
+  title
+  date
+  endDate
+  isEnded
+  image {
+    url
+    blurhash
+  }
+  description
+  minAge
+  priceText
+  location {
+    point {
+      coordinates
+    }
+    locationText
+  }
+  isFollowing
+  isVerified
+  isOfficial
+  haveTicket
+  isParticipating
+  isRequested
+  is_ticketing_enabled
+  has_ticketing_system
+  adminOnly
+  contactInfo {
+    name
+    phoneNumber
+    wsNumber
+    instagram
+  }
+
+  #DEPRECATED
+  invitation_requests_enabled
+  has_ticket_system
+}
+
+fragment PrFields on PR {
+  name
+  userId
+  phoneNumber
+  packagesAvailability {
+    packageId
+    issued
+    available
+    packageDoc {
+      ...EventPackageFields
+    }
+  }
+  removed
+}
+
+fragment TicketFields on Ticket {
+  id
+  code
+  used
+  createdAt
+  revoked
+  eventInfo {
+    event {
+      id
+      title
+      date
+      location {
+        point {
+          coordinates
+        }
+        locationText
+      }
+      eventType
+    }
+    package {
+      ...EventPackageFields
+    }
+  }
+}
+
+fragment EventPackageFields on EventPackage {
+  id
+  name
+  userPrice
+  currency
+  paymentTypes
+  type
+  hidden
+  minAge
+  sex
+  code
+  enabled
+  skipLine
+  drinks
+  soldout
+  maxTickets
+  maxTicketsPerUser
+}
+
+query GetEventById($id: ID!) {
+  getEventById(id: $id) {
+    ...EventFields
+    organizer {
+      ...OrganizerFields
+    }
+    creator {
+      id
+      username
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+    myReview {
+      ...ReviewFields
+    }
+    releaseDate
+    released
+    packages {
+      ...EventPackageFields
+    }
+    myRoles
+    eventType
+  }
+}
+
+query getUserAttendedEvents($userId: ID!) {
+  getUserAttendedEvents(userId: $userId) {
+    ...EventFields
+  }
+}
+
+query SearchEvents($text: String!) {
+  searchEvents(text: $text) {
+    ...EventFields
+  }
+}
+
+mutation AdminCreateEvent(
+  $title: String!
+  $description: String!
+  $date: Date!
+  $endDate: Date
+  $image: AssetInput!
+  $location: LocationInput!
+  $minAge: Int
+  $priceText: String
+  $organizer: ID
+  $contactInfo: EventContactInfoInput
+  $controlledRelease: Boolean
+  $releaseDate: Date
+  $ticketingSystem: Boolean
+) {
+  adminCreateEvent(
+    title: $title
+    description: $description
+    date: $date
+    endDate: $endDate
+    image: $image
+    minAge: $minAge
+    location: $location
+    priceText: $priceText
+    organizer: $organizer
+    contactInfo: $contactInfo
+    controlledRelease: $controlledRelease
+    releaseDate: $releaseDate
+    ticketingSystem: $ticketingSystem
+  ) {
+    ...EventFields
+  }
+}
+
+mutation AdminEditEvent(
+  $eventId: ID!
+  $title: String
+  $description: String
+  $image: AssetInput
+) {
+  adminEditEvent(
+    eventId: $eventId
+    title: $title
+    description: $description
+    image: $image
+  ) {
+    ...EventFields
+  }
+}
+
+query GetUpcomingEvents($pagination: CursorPaginationOptions) {
+  getUpcomingEvents(pagination: $pagination) {
+    ...EventFields
+
+    friendsFollowingPreview {
+      username
+      id
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+  }
+}
+
+mutation UnfollowEvent($eventId: ID!) {
+  unfollowEvent(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+mutation FollowEvent($eventId: ID!) {
+  followEvent(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+query GetFriendsInEvent($eventId: ID!) {
+  getFriendsInEvent(eventId: $eventId) {
+    id
+    username
+    phoneNumber
+    profilePicture {
+      url
+      blurhash
+    }
+  }
+}
+
+query GetUsersFollowingEvent(
+  $eventId: ID!
+  $pagination: CursorPaginationOptions
+) {
+  getUsersFollowingEvent(eventId: $eventId, pagination: $pagination) {
+    id
+    username
+    phoneNumber
+    profilePicture {
+      url
+      blurhash
+    }
+    spotInfo {
+      areFriends
+      createdAt
+    }
+  }
+}
+
+query GetEventsToReview($pagination: CursorPaginationOptions) {
+  getEventsToReview(pagination: $pagination) {
+    ...EventFields
+  }
+}
+
+query GetFollowedEvents($pagination: CursorPaginationOptions) {
+  getFollowedEvents(pagination: $pagination) {
+    ...EventFields
+  }
+}
+
+query GetOfficialEvents {
+  getOfficialEvents {
+    ...EventFields
+    PRs {
+      name
+      userId
+    }
+  }
+}
+
+mutation AdminScanTicket($ticketId: ID!, $ticketCode: ID!, $eventId: ID!) {
+  adminScanTicket(
+    ticketId: $ticketId
+    ticketCode: $ticketCode
+    eventId: $eventId
+  ) {
+    success
+    errorCode
+    package {
+      ...EventPackageFields
+    }
+    ticket {
+      id
+      adminNote
+      createdAt
+      userIdentity {
+        firstName
+        lastName
+        birthday
+        gender
+      }
+      notPaid
+      paymentType
+    }
+  }
+}
+
+mutation SendEventInvitationRequest($eventId: ID!, $mode: RequestContactMode!) {
+  sendEventInvitationRequest(eventId: $eventId, mode: $mode) {
+    success
+  }
+}
+
+mutation RequestPackageToPr($eventId: ID!, $packageId: ID!, $prId: ID!) {
+  requestPackageToPr(eventId: $eventId, packageId: $packageId, prId: $prId) {
+    success
+    alreadyRequested
+    errorCode
+    invitation {
+      id
+      pr {
+        userId
+        name
+      }
+    }
+  }
+}
+
+mutation RemoveEventRequest($invitationId: ID!) {
+  removeEventRequest(invitationId: $invitationId) {
+    success
+  }
+}
+
+mutation AdminAcceptInvitationRequest($userId: ID!, $eventId: ID!) {
+  adminAcceptInvitationRequest(userId: $userId, eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+mutation AdminRejectInvitationRequest($userId: ID!, $eventId: ID!) {
+  adminRejectInvitationRequest(userId: $userId, eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+query AdminGetTicketingStats($eventId: ID!) {
+  adminGetTicketingStats(eventId: $eventId) {
+    totalTickets
+    packages {
+      package {
+        id
+        name
+      }
+      count
+    }
+    paymentTypes {
+      type
+      count
+    }
+  }
+}
+
+query AdminGetEventTickets(
+  $eventId: ID!
+  $pagination: CursorPaginationOptions
+) {
+  adminGetEventTickets(eventId: $eventId, pagination: $pagination) {
+    id
+    used
+    createdAt
+    userId
+    userIdentity {
+      gender
+      birthday
+      firstName
+      lastName
+    }
+    pr {
+      name
+      userId
+    }
+    paymentType
+    packageId
+    revoked
+    eventInfo {
+      package {
+        name
+        id
+        code
+      }
+    }
+  }
+}
+
+query AdminGetEventPrTickets(
+  $eventId: ID!
+  $prId: ID!
+  $pagination: CursorPaginationOptions
+) {
+  adminGetEventPrTickets(
+    eventId: $eventId
+    prId: $prId
+    pagination: $pagination
+  ) {
+    id
+    used
+    createdAt
+    userId
+    userIdentity {
+      gender
+      birthday
+      firstName
+      lastName
+    }
+    packageId
+    revoked
+    eventInfo {
+      package {
+        name
+        id
+        code
+      }
+    }
+  }
+}
+
+query GetEventPRs($eventId: ID!) {
+  getEventPRs(eventId: $eventId) {
+    ...PrFields
+  }
+}
+
+mutation AdminAddPrToEvent($prId: ID!, $eventId: ID!) {
+  adminAddPrToEvent(eventId: $eventId, prId: $prId) {
+    success
+    errorCode
+    alreadyPr
+    pr {
+      ...PrFields
+    }
+  }
+}
+
+mutation AdminRemovePrFromEvent($prId: ID!, $eventId: ID!) {
+  adminRemovePrFromEvent(eventId: $eventId, prId: $prId) {
+    success
+    errorCode
+  }
+}
+
+query MyPrInfo($eventId: ID!, $pagination: CursorPaginationOptions) {
+  getMyPrInfo(eventId: $eventId) {
+    ...PrFields
+  }
+  getMyPrInvitationRequests(eventId: $eventId, pagination: $pagination) {
+    id
+    userId
+    userDoc {
+      username
+      profilePicture {
+        url
+        blurhash
+      }
+      firstName
+      lastName
+      birthday
+      gender
+    }
+    packageId
+    packageDoc {
+      ...EventPackageFields
+    }
+  }
+}
+
+mutation AdminEditPrPackagesAvailability(
+  $prId: ID!
+  $eventId: ID!
+  $packages: [PRPackageAvailabilityInput!]!
+) {
+  adminEditPrPackagesAvailability(
+    prId: $prId
+    eventId: $eventId
+    packages: $packages
+  ) {
+    ...PrFields
+  }
+}
+
+mutation editMyPrInfo($name: String, $phoneNumber: String, $eventId: ID!) {
+  editMyPrInfo(name: $name, phoneNumber: $phoneNumber, eventId: $eventId) {
+    ...PrFields
+  }
+}
+
+mutation AdminRevokeUserTicket($eventId: ID!, $ticketId: ID!) {
+  adminRevokeUserTicket(eventId: $eventId, ticketId: $ticketId) {
+    success
+    errorCode
+  }
+}
+
+mutation AdminDeleteEvent($eventId: ID!) {
+  adminDeleteEvent(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+mutation AdminMarkEventAsEnded($eventId: ID!) {
+  adminMarkEventAsEnded(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+mutation ReleaseEvent($eventId: ID!) {
+  releaseEvent(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+query getMyEvents($pagination: CursorPaginationOptions) {
+  getMyEvents(pagination: $pagination) {
+    ...EventFields
+    released
+    releaseDate
+    myRoles
+  }
+}
+
+query GetEventsRoles($eventId: ID!) {
+  getEventsRoles(eventId: $eventId) {
+    roles
+    user {
+      username
+      id
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+  }
+}
+
+mutation CancelEventScheduling($eventId: ID!) {
+  cancelEventScheduling(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+mutation CreateEventPackage(
+  $eventId: ID!
+  $name: String!
+  $userPrice: Int!
+  $currency: String!
+  $paymentTypes: [EventPackagePaymentType!]!
+  $type: EventPackageType
+  $hidden: Boolean
+  $minAge: Int
+  $sex: EventPackageSexType
+  $drinks: Int
+  $skipLine: Boolean
+  $maxTickets: Int
+  $maxTicketsPerUser: Int
+) {
+  createEventPackage(
+    eventId: $eventId
+    name: $name
+    userPrice: $userPrice
+    currency: $currency
+    paymentTypes: $paymentTypes
+    type: $type
+    hidden: $hidden
+    minAge: $minAge
+    sex: $sex
+    drinks: $drinks
+    skipLine: $skipLine
+    maxTickets: $maxTickets
+    maxTicketsPerUser: $maxTicketsPerUser
+  ) {
+    success
+    errorCode
+    package {
+      ...EventPackageFields
+    }
+  }
+}
+
+mutation EditEventPackage(
+  $eventId: ID!
+  $packageId: ID!
+  $name: String!
+  $paymentTypes: [EventPackagePaymentType!]!
+  $minAge: Int
+  $sex: EventPackageSexType
+  $drinks: Int
+  $skipLine: Boolean
+  $maxTicketsPerUser: Int
+  $maxTickets: Int
+) {
+  editEventPackage(
+    eventId: $eventId
+    packageId: $packageId
+    name: $name
+    paymentTypes: $paymentTypes
+    minAge: $minAge
+    drinks: $drinks
+    skipLine: $skipLine
+    sex: $sex
+    maxTicketsPerUser: $maxTicketsPerUser
+    maxTickets: $maxTickets
+  ) {
+    success
+    errorCode
+    package {
+      ...EventPackageFields
+    }
+  }
+}
+
+mutation DeleteEventPackage($eventId: ID!, $packageId: ID!) {
+  deleteEventPackage(eventId: $eventId, packageId: $packageId) {
+    success
+    alreadyIssued
+    errorCode
+  }
+}
+
+query AdminGetEventPackages($eventId: ID!) {
+  adminGetEventPackages(eventId: $eventId) {
+    ...EventPackageFields
+  }
+}
+
+mutation EditEventPackageStatus(
+  $eventId: ID!
+  $packageId: ID!
+  $hidden: Boolean
+  $soldout: Boolean
+  $enabled: Boolean
+) {
+  editEventPackageStatus(
+    eventId: $eventId
+    packageId: $packageId
+    hidden: $hidden
+    soldout: $soldout
+    enabled: $enabled
+  ) {
+    success
+    errorCode
+    cannotUnsetSoldout
+  }
+}
+
+mutation ReservePackage($eventId: ID!, $packageId: ID!) {
+  reservePackage(eventId: $eventId, packageId: $packageId) {
+    success
+    errorCode
+    ticket {
+      ...TicketFields
+    }
+  }
+}
+
+query GetMyTicketsByEvent($eventId: ID!) {
+  getMyTicketsByEvent(eventId: $eventId) {
+    ...TicketFields
+  }
+}
+
+mutation PrAccetInvitationRequest($invitationId: ID!) {
+  prAccetInvitationRequest(invitationId: $invitationId) {
+    success
+    errorCode
+  }
+}
+
+mutation PrRejectInvitationRequest($invitationId: ID!) {
+  prRejectInvitationRequest(invitationId: $invitationId) {
+    success
+    errorCode
+  }
+}
+
+mutation AdminCreateTicketingSystem($eventId: ID!) {
+  adminCreateTicketingSystem(eventId: $eventId) {
+    success
+    errorCode
+  }
+}
+
+mutation AdminEnableTicketing($eventId: ID!, $enable: Boolean!) {
+  adminEnableTicketing(eventId: $eventId, enable: $enable) {
+    success
+    errorCode
+  }
+}
+
+query GetEventPackageTicketCount($eventId: ID!, $packageId: ID!) {
+  getEventPackageTicketCount(eventId: $eventId, packageId: $packageId)
+}
+
+query AdminGetAdvancedTicketingStats($eventId: ID!) {
+  adminGetTicketsUsersStats(eventId: $eventId) {
+    totalCount
+    maleCount
+    femaleCount
+    nonBinaryCount
+    ageRangeStats {
+      to
+      from
+      value
+    }
+  }
+  adminGetTicketsTrendStats(eventId: $eventId) {
+    date
+    count
+  }
+}
+
+mutation AddUserRoleToEvent(
+  $eventId: ID!
+  $userId: ID!
+  $role: EventCollaboratorRole!
+) {
+  addUserRoleToEvent(eventId: $eventId, userId: $userId, role: $role) {
+    success
+    errorCode
+  }
+}
+
+mutation RemoveUserRoleFromEvent(
+  $eventId: ID!
+  $userId: ID!
+  $role: EventCollaboratorRole!
+) {
+  removeUserRoleFromEvent(eventId: $eventId, userId: $userId, role: $role) {
+    success
+    errorCode
+  }
+}
+
+mutation RemoveCollaboratorFromEvent($eventId: ID!, $userId: ID!) {
+  removeCollaboratorFromEvent(eventId: $eventId, userId: $userId) {
+    success
+    errorCode
+  }
+}
+
+query GetEventsAvailableToImport(
+  $eventId: ID
+  $organizerId: ID
+  $withPrsOnly: Boolean = false
+) {
+  getEventsAvailableToImport(
+    eventId: $eventId
+    organizerId: $organizerId
+    withPrsOnly: $withPrsOnly
+  ) {
+    id
+    title
+    date
+    image {
+      url
+      blurhash
+    }
+    PRs {
+      name
+      userId
+    }
+  }
+}
+
+mutation ImportPrsFromEvent(
+  $fromEventId: ID!
+  $toEventId: ID!
+  $prsIds: [ID!]!
+) {
+  importPrsFromEvent(
+    fromEventId: $fromEventId
+    toEventId: $toEventId
+    prsIds: $prsIds
+  ) {
+    success
+    errorCode
+  }
+}
+
+mutation RemoveMeFromEvent($eventId: ID!, $role: EventCollaboratorRole) {
+  removeMeFromEvent(eventId: $eventId, role: $role) {
+    success
+  }
+}

@@ -1,0 +1,18 @@
+query GetAssistence {
+  getAssistence {
+    userId
+    text
+    id
+
+    user {
+      username
+      id
+    }
+  }
+}
+
+mutation CreateAssistence($text: String!, $type: AssistenceType!) {
+  createAssistence(text: $text, type: $type) {
+    success
+  }
+}

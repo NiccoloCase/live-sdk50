@@ -1,0 +1,379 @@
+fragment UserFields on User {
+  id
+  username
+  phoneNumber
+  pushToken
+  gender
+  profilePicture {
+    url
+    aspectRatio
+    blurhash
+  }
+  favDrink
+  birthday
+  role
+  links {
+    instagramName
+  }
+  textStatus {
+    text
+    createdAt
+  }
+}
+
+query Whoami {
+  whoami {
+    ban {
+      banned
+      reason
+    }
+
+    stats {
+      spottedCount
+      sentInteractionsCount
+      recivedInteractionsCount
+      acceptedInteractionsCount
+      friendsCount
+    }
+    coins {
+      count
+    }
+    school {
+      id
+      isAdmin
+    }
+    languageCode
+    hasAdminArea
+    firstName
+    lastName
+    currentEventID
+    ...UserFields
+  }
+}
+
+mutation UpdateProfile(
+  $username: String
+  $profileImage: AssetInput
+  $birthday: Date
+  $gender: Gender
+  $favDrink: String
+  $instagramName: String
+  $schoolID: ID
+  $firstName: String
+  $lastName: String
+) {
+  updateUserProfile(
+    username: $username
+    profileImage: $profileImage
+    birthday: $birthday
+    gender: $gender
+    favDrink: $favDrink
+    instagramName: $instagramName
+    schoolID: $schoolID
+    firstName: $firstName
+    lastName: $lastName
+  ) {
+    ban {
+      banned
+      reason
+    }
+
+    stats {
+      spottedCount
+      sentInteractionsCount
+      recivedInteractionsCount
+      acceptedInteractionsCount
+      friendsCount
+    }
+    coins {
+      count
+    }
+    school {
+      id
+      isAdmin
+    }
+    languageCode
+    hasAdminArea
+    firstName
+    lastName
+    ...UserFields
+  }
+}
+
+mutation SetPushNotificationToken($token: String!) {
+  setPushNotificationToken(token: $token) {
+    success
+  }
+}
+
+mutation SetLanguageCode($code: String!) {
+  setLanguageCode(code: $code) {
+    success
+  }
+}
+
+mutation ChangeEmail($email: String!) {
+  changeEmail(email: $email) {
+    success
+    recipient
+  }
+}
+
+mutation ChangePasswordWithToken($token: String!, $newPassword: String!) {
+  changePasswordWithToken(token: $token, newPassword: $newPassword) {
+    success
+  }
+}
+
+mutation EditPassword($oldPassword: String!, $newPassword: String!) {
+  editPassword(oldPassword: $oldPassword, newPassword: $newPassword) {
+    success
+  }
+}
+
+mutation BanUser($userId: ID!, $reason: String) {
+  banUser(userId: $userId, reason: $reason) {
+    success
+  }
+}
+
+query GetUsersAdmin($pagination: CursorPaginationOptions, $onlyLimit: Boolean) {
+  getUsersAdmin(pagination: $pagination, onlyLimit: $onlyLimit) {
+    ...UserFields
+
+    ban {
+      banned
+    }
+  }
+}
+
+query GetUserById($id: String!) {
+  getUserById(id: $id) {
+    ...UserFields
+    spotInfo {
+      areFriends
+      createdAt
+      event {
+        id
+        title
+        image {
+          url
+          blurhash
+        }
+      }
+    }
+
+    hasRequestedFriendship
+    eventsAttendedCount
+    stats {
+      spottedCount
+      friendsCount
+    }
+  }
+}
+
+mutation ReportUser($userId: ID!, $reason: String!) {
+  reportUser(userId: $userId, reason: $reason) {
+    success
+  }
+}
+
+query GetReportedUsers($pagination: CursorPaginationOptions) {
+  getReportedUsers(pagination: $pagination) {
+    id
+    username
+    profilePicture {
+      url
+      blurhash
+    }
+    gender
+    ban {
+      banned
+    }
+  }
+}
+
+mutation RemoveUserReports($userId: ID!) {
+  removeUserReports(userId: $userId) {
+    success
+  }
+}
+
+query GetNearbyUserById($userId: ID!) {
+  getNearbyUserById(userId: $userId) {
+    user {
+      ...UserFields
+    }
+    blocked
+    offline
+  }
+}
+
+mutation SpotUser($userId: ID!) {
+  spotUser(userId: $userId) {
+    success
+    new
+    sharedUsers {
+      userId
+      new
+    }
+  }
+}
+
+mutation MarkUserAsEventParticipant($joinCode: ID!) {
+  markUserAsEventParticipant(joinCode: $joinCode) {
+    success
+  }
+}
+
+query GetSpottedUsers($pagination: CursorPaginationOptions) {
+  getSpottedUsers(pagination: $pagination) {
+    items {
+      user {
+        username
+        id
+        profilePicture {
+          url
+          blurhash
+        }
+      }
+      createdAt
+      id
+      areFriends
+    }
+    cursor
+    endReached
+  }
+}
+
+query SearchSpottedUsers($searchText: String!) {
+  searchSpottedUsers(searchText: $searchText) {
+    user {
+      username
+      id
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+    createdAt
+    id
+    areFriends
+  }
+}
+
+mutation AddTextStatus($text: String) {
+  addTextStatus(text: $text) {
+    text
+    createdAt
+  }
+}
+
+mutation NearbyStartup {
+  nearbyStartup {
+    pingID
+    spotCode
+    success
+  }
+}
+
+query GetFriends($pagination: CursorPaginationOptions) {
+  getFriends(pagination: $pagination) {
+    items {
+      username
+      id
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+    cursor
+    endReached
+  }
+}
+
+mutation AskFriendship($targetId: ID!) {
+  askFriendship(targetId: $targetId) {
+    success
+  }
+}
+
+mutation AcceptFriendship($targetId: ID!) {
+  acceptFriendship(targetId: $targetId) {
+    success
+  }
+}
+
+mutation RejectFriendship($targetId: ID!) {
+  rejectFriendship(targetId: $targetId) {
+    success
+  }
+}
+
+mutation RemoveFriendship($targetId: ID!) {
+  removeFriendship(targetId: $targetId) {
+    success
+  }
+}
+
+query GetFriendshipRequests {
+  getFriendshipRequests {
+    username
+    id
+    profilePicture {
+      url
+      blurhash
+    }
+  }
+}
+
+query GetFriendshipRequests {
+  getFriendshipRequests {
+    username
+    id
+    profilePicture {
+      url
+      blurhash
+    }
+  }
+}
+
+query GetFriendshipRequestsSent {
+  getFriendshipRequestsSent
+}
+
+query SearchUserByPhoneNumber($phoneNumber: String!) {
+  searchUserByPhoneNumber(phoneNumber: $phoneNumber) {
+    username
+    id
+    profilePicture {
+      url
+      blurhash
+    }
+    firstName
+    lastName
+  }
+}
+
+query GetAdminAreaInfo {
+  getAdminAreaInfo {
+    isAppAdmin
+  }
+}
+
+query SearchUserByTextOrPhoneNumber($text: String!) {
+  searchUserByTextOrPhoneNumber(text: $text) {
+    username
+    id
+    profilePicture {
+      url
+      blurhash
+    }
+  }
+}
+
+query GetMyTickets($pagination: CursorPaginationOptions) {
+  getMyTickets(pagination: $pagination) {
+    ...TicketFields
+  }
+}

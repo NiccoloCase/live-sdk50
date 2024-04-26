@@ -1,0 +1,262 @@
+{
+  "translation": {
+    "cancel": "Annulla",
+    "ok": "Ok",
+    "done": "Fatto",
+    "save": "Salva",
+    "back": "Indietro",
+    "next": "Avanti",
+    "errors": {
+      "generic": "Si è verificato un errore. Riprova più tardi.",
+      "too-many-requests": "Troppe richieste! Prova più tardi"
+    },
+    "search": "Cerca",
+    "loading": "Caricamento...",
+    "stop": "Ferma",
+    "see-more": "Vedi altro",
+    "options": "Opzioni"
+  },
+  "time": {
+    "now": "ora",
+    "seconds-ago_one": "{{count}} secondo fa",
+    "seconds-ago_other": "{{count}} secondi fa",
+    "minutes-ago_one": "{{count}} minuto fa",
+    "minutes-ago_other": "{{count}} minuti fa",
+    "hours-ago_one": "{{count}} ora fa",
+    "hours-ago_other": "{{count}} ore fa",
+    "days-ago_one": "{{count}} giorno fa",
+    "days-ago_other": "{{count}} giorni fa",
+    "weeks-ago_one": "{{count}} settimana fa",
+    "weeks-ago_other": "{{count}} settimane fa",
+    "months-ago_one": "{{count}} mese fa",
+    "months-ago_other": "{{count}} mesi fa",
+    "years-ago_one": "{{count}} anno fa",
+    "years-ago_other": "{{count}} anni fa"
+  },
+  "components": {
+    "discover-carousel": {
+      "school-card": {
+        "join-title": "Unisciti alla tua scuola!",
+        "join-subtitle": "Scopri se la tua scuola è stata selezionata per il programma di test",
+        "your-school": "La tua scuola",
+        "admin": "SEI ADMIN DELLA SCUOLA"
+      },
+      "complete-profile-card": {
+        "title": "Completa il tuo profilo!",
+        "subtitle": "Aggiungi un foto profilo per completare il tuo profilo e sblocca tutte le funzionalità di SpotLive"
+      }
+    },
+    "picker-modal": {
+      "text": "<0>Non è consenito ed è soggetto alla sospensione dell'account, il caricamento di:</0><1>- Contenuti violenti, offensivi, discriminatori.</1><2>- Materiale sessualmente esplicito.</2><3>- Contenuti che incitano all'odio.</3><4> - Foto manipolate o che si appropriano dell'identià altrui.</4>"
+    },
+    "image-picker": {
+      "select-from-gallery": "Seleziona dalla galleria",
+      "take-picture": "Scatta una foto",
+      "unable-to-continue": "Impossibile continuare",
+      "no-gallery-permission": "Siamo spiacenti, è necessaria l'autorizzazione per l'accesso alla gallerria",
+      "no-camera-permission": "Siamo spiacenti, è necessaria l'autorizzazione per l'accesso alla fotocamera",
+      "request-permissions": "Richiedi permessi"
+    }
+  },
+  "snackbar": {
+    "profileUpdated": "Profilo aggiornato!"
+  },
+  "welcome-screen": {
+    "title": "Benvenuto su {{APP_NAME}}",
+    "subtitle": "Sei alla ricerca di nuove amicizie o vuoi semplicemente espandere la tua cerchia sociale incontrando nuove persone? Allora SpotLive fa al caso tuo! Con SpotLive, non dovrai più cercare disperatamente nuove relazioni online, ma potrai approcciare le persone nella vita reale e ampliare la tua cerchia di amici e conoscenti in modo facile e divertente.",
+    "start": "Iniziamo!"
+  },
+  "signup-screen": {
+    "title": "Ciao!",
+    "subtitle": "Inizia a usare SpotLive",
+    "phone-label": "Inserisci il tuo numero di telefono",
+    "verificationCodeText": "Inserisci il codice di verifica inviato a <1>{{phoneNumber}}</1>",
+    "errors": {
+      "generic": "Si è verificato un errore. Riprova più tardi.",
+      "too-many-requests": "Troppe richieste! Abbiamo momentaneamente sospeso le richieste da questo dispositivo. Riprova più tardi",
+      "phone-number-not-valid": "Il numero di telefono non è valido",
+      "wrong-code": "Il codice inserito non è valido"
+    }
+  },
+  "ban-screen": {
+    "title": "Sei stato bannato dall'applicazione",
+    "subtitle": "Stiamo revisionando il tuo profilo"
+  },
+  "wait-for-connection-screen": {
+    "title": "Sei offline!",
+    "subtitle": "Connettiti a internet per continuare"
+  },
+  "versioning-screens": {
+    "version-invalid": "Versione obsoleta",
+    "version-invalid-subtitle": "Per continuare ad usare l'applicazione, devi aggiornarla alla versione più recente",
+    "updating": "Aggiornamento in corso"
+  },
+  "delete-account-screen": {
+    "label": "Inserisci il tuo nome utente per completare l'operazione",
+    "name-placeholder": "Nome utente",
+    "title": "Elimina account",
+    "warning": {
+      "title": "ATTENZIONE! Operazione irreversibile",
+      "subtitle": "Sei sicuro di voler eliminare l'account? Verrano eliminati tutti i dati e contenuti multimediali associati ad esso. L'azione è irreversibile"
+    },
+    "success": {
+      "title": "Account eliminato",
+      "subtitle": "L'account è stato eliminato con successo"
+    }
+  },
+  "profile-screen": {
+    "title": "Il tuo profilo"
+  },
+  "settings-screen": {
+    "title": "Impostazioni",
+    "privacy-policy-label": "Normativa sulla privacy",
+    "logout-label": "Logout",
+    "delete-account-label": "Elimina account"
+  },
+  "radar-screen": {
+    "welcome": {
+      "title": "Come funziona?",
+      "subtitle": "Scopri le persone strettamente vicine a te e interagisci con loro. ",
+      "description1": "SpotLive utilizza varie tecnologie tra cui il BLE per renderti visibili ai dispositivi vicini. L'utilizzo in background è limitato",
+      "description2": "<0>L'utilizzo in background è limitato.</0> Si consiglia di tenere l'applicazione aperta per un'esperienza ottimale"
+    },
+    "get-started-screen": {
+      "ios-position-always": {
+        "title": "Posizione 'Sempre'",
+        "subtitle": "Ci siamo quasi!",
+        "description": "Nelle impostazioni abilita l'utilizzo della posizione impostandola su SEMPRE",
+        "button-label": "Richiedi permesso",
+        "button-description": "E abilita la posizione 'sempre'"
+      },
+      "ios-ble": {
+        "title": "Bluetooth",
+        "subtitle": "Ci siamo quasi!",
+        "description": "Consenti l'utilizzo del Bluetooth e alla connessione con i dispositivi nelle vicinanze",
+        "description2": "SpotLive ha bisogno del Bluetooth per funzionare e mostrarti le persone che sono vicine a te!",
+        "button-label": "Richiedi permessi"
+      },
+      "profile-picture": {
+        "title": "Foto profilo",
+        "subtitle": "Ci siamo quasi!",
+        "description": "Aggiungi una foto profilo per completare il tuo profilo e sbloccare tutte le funzionalità di SpotLive",
+        "done": "Fatto"
+      }
+    },
+    "missing-permissions": {},
+    "golive": "Vai Live!",
+    "see-other": "Vedi altri",
+    "back": "Indietro",
+    "found-users": "Persone trovate",
+    "report-user": "Segnala e blocca l'utente",
+    "add-state-label": "Stato",
+    "ig-profile": "Profilo Instagram",
+    "your-state": "Il tuo stato",
+    "interactions-label": "Interazioni",
+    "see-profile": "Tap sul nome per vedere il profilo",
+    "interact": "Interagisci",
+    "interaction-sent": "Interazione inviata"
+  },
+  "set-instagram-screen": {
+    "title": "Instagram",
+    "text": "Collega il tuo profilo Instagram e rendilo visibile a tutte le persone che incontrerai",
+    "preview": "anteprima"
+  },
+  "set-state-screen": {
+    "title": "Il tuo stato",
+    "placeholder": "Aggiungi un tuo stato...",
+    "description": "Lo stato testuale sarà visibile per 24 ore a tutte le persone che ti circondano"
+  },
+  "interactions-screen": {
+    "title": "Interazioni",
+    "interaction-with": "Hai notato {{username}}",
+    "interaction-recived": "{{username}} ti ha notato!",
+    "see": "Vedi",
+    "no-interactions": "Non hai ancora interazioni",
+    "no-interactions-sub": "Qui è dove vedrai le interazioni con gli altri utenti",
+    "accepted": "Accettata",
+    "rejected": "Rifiutata"
+  },
+  "create-review-screen": {
+    "title": "Come valuti la tua esperienza?",
+    "subtitle": "Lascia una recensione",
+    "label": "Commento",
+    "submit": "Pubblica"
+  },
+  "event-join-screen": {
+    "future-date": "Non puoi selezionare una data futura",
+    "min-age": "Devi avere almeno 13 anni",
+    "max-age": "Seleziona una data consona",
+    "birth-date": "Data di nascita?",
+    "configure-profile": "Finisci di configurare il tuo profilo",
+    "select-birth-date": "Seleziona data di nascita",
+    "profile-picture": "Foto profilo",
+    "profile-picture-sub": "Finisci di configurare il tuo profilo",
+    "add-photo": "Seleziona immagine profilo"
+  },
+  "bar-code": {
+    "permission-justification": "Per leggere i QR code serve l'accesso alla fotocamera",
+    "missin-permission": "Mancano i permessi per la fotocamera",
+    "go-to-settings": "Vai alle impostazioni",
+    "scan-join": "Scannerizza il codice QR all'entrata",
+    "arrived-at-the-event": "Informa a tutti i tuoi match che sei arrivato/a all'evento"
+  },
+  "discover": {
+    "no-matches": "Non hai ancora fatto nessun match",
+    "enter": "Entra e vai Live",
+    "enter-sub": " per non perderti nulla",
+    "in-evidenza": "In evidenza",
+    "show-others": "Vedi altri",
+    "subscribed": "Ti interessa",
+    "stats": "Le tue statistiche",
+    "attached-event": "Evento fissato"
+  },
+  "event-screen": {
+    "leave-event": "Lascia evento",
+    "leave-event-sub": "Sei sicuro di voler lasciare l'evento?",
+    "cancel": "Annulla",
+    "leave": "Lascia",
+    "event-not-found": "Evento non trovato",
+    "event-not-found-sub": "L'evento che stai cercando non è disponibile",
+    "how-event": "Come è stato?",
+    "add-review": "Aggiungi una recensione",
+    "your-review": "La tua recensione",
+    "see": "Vedi",
+    "official-event": "Evento ufficiale",
+    "verified-event": "Evento verificato",
+    "your-ticket": "Vedi biglietti!",
+    "show-ticket": "Esibisci il tuo biglietto all'entrata",
+    "buy": "Acquista",
+    "settings": "Impostazioni",
+    "started": "Già iniziato",
+    "ended": "Concluso",
+    "show-less": "Mostra meno",
+    "show-all": "Mostra tutto",
+    "from": "Da",
+    "to-date": "Fino a",
+    "to-time": "Fino alle",
+    "age": "Età:",
+    "price": "Prezzo",
+    "followed": "Segui già",
+    "follow": "Segui",
+    "how-it-works": "Come funziona?",
+    "tutorial-1": "Unisciti a un evento per ricevere aggiornamenti, informare i tuoi amici, lasciare recensioni e tanto altro.",
+    "tutorial-2": "Per alcuini eventi potrai vedere in anteprima chi partecipa",
+    "no-friends": "Nessun tuo amico è per ora iscritto a questo evento",
+    "first": "Unisciti per primo e muovi le masse!",
+    "friends": "Amici che partecipano:",
+    "info-phone": "Per informazioni e prenotazioni",
+    "see-all": "Vedi tutti",
+    "intrerested-users": "Interessa a",
+    "follow-intrested-users": "Segui l'evento per vedere chi è interessato",
+    "unfollow-event-has-request": "Non puoi smettere di seguire l'evento poichè hai in sospeso una richiesa di invito.",
+    "unfollow-event-has-ticket": "Non puoi smettere di seguire l'evento poichè hai già un biglietto.",
+    "generic-error": "Si è verificato un errore",
+    "unfollowed": "Non segui più l'evento"
+  },
+  "event-followed-screen": {
+    "no-events-followed": "Non sei iscritto ancora a nessun evento",
+    "find-events-to-follow": "Trova un evento a cui vorresti partecipare e iscriviti",
+    "followed": "Seguiti",
+    "followed-events": "Eventi che segui"
+  }
+}

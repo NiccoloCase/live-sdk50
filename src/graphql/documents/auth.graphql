@@ -1,0 +1,74 @@
+# mutation Register($username: String!, $email: String!, $password: String!) {
+#   signup(username: $username, email: $email, password: $password) {
+#     success
+#   }
+# }
+
+query IsPhoneNumberAlreadyUsed($phoneNumber: String!) {
+  isPhoneNumberAlreadyUsed(phoneNumber: $phoneNumber)
+}
+
+# query IsEmailAlreadyUsed($email: String!) {
+#   isEmailAlreadyUsed(email: $email)
+# }
+
+# query IsUsernameAlreadyUsed($username: String!) {
+#   isUsernameAlreadyUsed(username: $username)
+# }
+
+# mutation SendConfirmationEmail($email: String!) {
+#   sendConfirmationEmail(email: $email) {
+#     success
+#     recipient
+#   }
+# }
+
+mutation logout {
+  logout {
+    success
+  }
+}
+
+mutation SavePhoneSessionInfo($sessionInfo: String!, $phoneNumber: String!) {
+  savePhoneSessionInfo(sessionInfo: $sessionInfo, phoneNumber: $phoneNumber)
+}
+
+mutation DeleteLoggedAccount {
+  deleteLoggedAccount {
+    success
+  }
+}
+
+mutation FirebasePhoneAuth($token: String!) {
+  firebasePhoneAuth(token: $token) {
+    success
+    tokens {
+      accessToken
+      refreshToken
+      expiresIn
+    }
+    newUser
+  }
+}
+
+mutation AdminAuth($phoneNumber: String!, $password: String!) {
+  adminAuth(phoneNumber: $phoneNumber, password: $password) {
+    success
+    tokens {
+      accessToken
+      refreshToken
+      expiresIn
+    }
+  }
+}
+
+mutation signupWithFirebasePhone($token: String!, $username: String!) {
+  signupWithFirebasePhone(firebaseToken: $token, username: $username) {
+    success
+    tokens {
+      accessToken
+      refreshToken
+      expiresIn
+    }
+  }
+}

@@ -1,0 +1,41 @@
+query SearchSchools($name: String!) {
+  searchSchools(name: $name) {
+    id
+    name
+    prov
+    add
+    type_description
+  }
+}
+
+query getSchoolById($id: ID!) {
+  getSchoolById(id: $id) {
+    id
+    add
+    name
+    prov
+    lastSpotModeDate
+    admins {
+      id
+      profilePicture {
+        url
+      }
+      username
+      links {
+        instagramName
+      }
+    }
+  }
+}
+
+mutation LeaveSchool {
+  leaveSchool {
+    success
+  }
+}
+
+mutation StartSchoolSpotMode {
+  startSchoolSpotMode {
+    success
+  }
+}

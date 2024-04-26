@@ -1,0 +1,7 @@
+type Review {
+  _hidden: Boolean
+}
+
+type Activity {
+  _hidden: Boolean
+}

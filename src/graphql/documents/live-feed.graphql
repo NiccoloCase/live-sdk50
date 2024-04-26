@@ -1,0 +1,66 @@
+fragment LiveFeedItemFields on LiveFeedItem {
+  id
+  type
+  createdAt
+  image {
+    url
+    aspectRatio
+  }
+  notification {
+    type
+    title
+    body
+    data
+  }
+  poll {
+    title
+    closed
+    selectedOption
+    options {
+      _id
+      voted
+      title
+    }
+  }
+  giveaway {
+    title
+    description
+    subscriptionOpen
+    subscribers
+    subscriptionCloseDate
+    countdownStart
+    countdownDurationSeconds
+    winners {
+      id
+      username
+    }
+  }
+}
+
+query GetEventLiveFeed($eventId: ID!, $pagination: CursorPaginationOptions) {
+  getEventLiveFeed(eventId: $eventId, pagination: $pagination) {
+    ...LiveFeedItemFields
+  }
+  getPinnedLiveFeedItem(eventId: $eventId) {
+    ...LiveFeedItemFields
+  }
+}
+
+mutation VoteLiveFeedPoll($itemId: ID!, $optionId: ID!) {
+  voteLiveFeedPoll(itemId: $itemId, optionId: $optionId) {
+    success
+  }
+}
+
+query GetLiveFeedItem($itemId: ID!) {
+  getLiveFeedItem(itemId: $itemId) {
+    ...LiveFeedItemFields
+  }
+}
+
+mutation SubscribeLiveFeedGiveaway($itemId: ID!) {
+  subscribeLiveFeedGiveaway(itemId: $itemId) {
+    success
+    errorCode
+  }
+}

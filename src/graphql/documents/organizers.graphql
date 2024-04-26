@@ -1,0 +1,226 @@
+fragment OrganizerFields on Organizer {
+  id
+  name
+  image {
+    url
+    blurhash
+  }
+  type
+  description
+  reviewsCount
+  totalRatingCount
+  rating
+  reviewsPreview {
+    ...ReviewFields
+  }
+  isFollowing
+  isPhysicalPlace
+  location {
+    point {
+      coordinates
+    }
+    locationText
+  }
+  website
+  phoneNumber
+  instagramUsername
+  openingHours {
+    monday {
+      open
+      close
+    }
+    tuesday {
+      open
+      close
+    }
+    wednesday {
+      open
+      close
+    }
+    thursday {
+      open
+      close
+    }
+    friday {
+      open
+      close
+    }
+    saturday {
+      open
+      close
+    }
+    sunday {
+      open
+      close
+    }
+  }
+  myRole
+}
+
+query SearchOrganizers($text: String!) {
+  searchOrganizers(text: $text) {
+    ...OrganizerFields
+  }
+}
+
+mutation CreateOrganizer(
+  $name: String!
+  $description: String
+  $type: OrganizerType
+  $image: AssetInput!
+) {
+  createOrganizer(
+    name: $name
+    description: $description
+    type: $type
+    image: $image
+  ) {
+    ...OrganizerFields
+  }
+}
+
+mutation FollowOrganizer($id: ID!) {
+  followOrganizer(id: $id) {
+    success
+  }
+}
+
+mutation UnfollowOrganizer($id: ID!) {
+  unfollowOrganizer(id: $id) {
+    success
+  }
+}
+
+query GetOrganizersLanding {
+  getOrganizersLanding {
+    ...OrganizerFields
+  }
+}
+
+query GetMyOrganizers {
+  getMyOrganizers {
+    ...OrganizerFields
+  }
+}
+
+query GetSuggestedOrganizers {
+  getSuggestedOrganizers {
+    ...OrganizerFields
+  }
+}
+
+mutation EditOrganizerImage($id: ID!, $image: AssetInput!) {
+  editOrganizerImage(id: $id, image: $image) {
+    ...OrganizerFields
+  }
+}
+
+mutation EditOrganizer(
+  $id: ID!
+  $values: EditOrganizerInputValues!
+  $remove: EditOrganizerRemoveFields!
+) {
+  editOrganizer(id: $id, values: $values, remove: $remove) {
+    ...OrganizerFields
+  }
+}
+
+mutation MakeUserOrganizerManager(
+  $userId: ID!
+  $organizerId: ID!
+  $role: OrganizerUserRole!
+) {
+  makeUserOrganizerManager(
+    userId: $userId
+    organizerId: $organizerId
+    role: $role
+  ) {
+    role
+    userId
+    user {
+      username
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+  }
+}
+
+query GetOrganizerManagers($organizerId: ID!) {
+  getOrganizerManagers(organizerId: $organizerId) {
+    userId
+    user {
+      id
+      username
+      profilePicture {
+        url
+        blurhash
+      }
+    }
+    role
+  }
+}
+
+mutation RemoveUserOrganizerManager($userId: ID!, $organizerId: ID!) {
+  removeUserOrganizerManager(userId: $userId, organizerId: $organizerId) {
+    success
+  }
+}
+
+query GetEventsByOrganizer(
+  $organizer: ID!
+  $pagination: CursorPaginationOptions
+) {
+  getEventsByOrganizer(organizer: $organizer, pagination: $pagination) {
+    ...EventFields
+    myRoles
+    released
+  }
+}
+
+query GetUpcomingEventsByOrganizer(
+  $organizer: ID!
+  $pagination: CursorPaginationOptions
+) {
+  getUpcomingEventsByOrganizer(organizer: $organizer, pagination: $pagination) {
+    ...EventFields
+    myRoles
+    released
+  }
+}
+
+query GetPastEventsByOrganizer(
+  $organizer: ID!
+  $pagination: CursorPaginationOptions
+) {
+  getPastEventsByOrganizer(organizer: $organizer, pagination: $pagination) {
+    ...EventFields
+    myRoles
+    released
+  }
+}
+
+query GetOrganizerById($id: ID!) {
+  getOrganizerById(id: $id) {
+    ...OrganizerFields
+  }
+}
+
+query GetOrganizerLanding(
+  $organizerId: ID!
+  $pagination: CursorPaginationOptions
+) {
+  getUpcomingEventsByOrganizer(
+    organizer: $organizerId
+    pagination: $pagination
+  ) {
+    ...EventFields
+  }
+  getPastEventsByOrganizer(organizer: $organizerId, pagination: $pagination) {
+    ...EventFields
+  }
+  getOrganizerById(id: $organizerId) {
+    ...OrganizerFields
+  }
+}

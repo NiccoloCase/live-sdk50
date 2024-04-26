@@ -1,0 +1,26 @@
+fragment RegionFields on Region {
+  id
+  identifier
+  name
+  description
+  point {
+    coordinates
+  }
+  radius
+}
+
+mutation InitRegions($lat: Float!, $lng: Float!) {
+  initRegions(lat: $lat, lng: $lng) {
+    currentRegion {
+      ...RegionFields
+    }
+    pingId
+    regions {
+      identifier
+      radius
+      point {
+        coordinates
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+query GetInteractions($pagination: CursorPaginationOptions) {
+  getInteractions(pagination: $pagination) {
+    id
+    type
+    createdAt
+    userId
+    mutual
+    targetId
+    author {
+      id
+      username
+      profilePicture {
+        url
+      }
+    }
+    target {
+      id
+      username
+    }
+  }
+}
+
+mutation CreateInteraction($targetId: ID!, $type: InteractionType!) {
+  createInteraction(type: $type, targetId: $targetId) {
+    userId
+    targetId
+    type
+    createdAt
+    id
+  }
+}
+
+mutation ReciprocateInteraction($id: ID!) {
+  reciprocateInteraction(interactionId: $id) {
+    success
+  }
+}

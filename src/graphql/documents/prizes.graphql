@@ -1,0 +1,8 @@
+query GetPrizes {
+  getPrizes {
+    isActive
+    price
+    title
+    code
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "translation": {
+    "cancel": "Cancel",
+    "ok": "Ok",
+    "done": "Done",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next",
+    "errors": {
+      "generic": "An error occurred",
+      "too-many-requests": "Too many requests. Please try again later."
+    },
+    "search": "Search",
+    "loading": "Loading...",
+    "stop": "Stop",
+    "see-more": "See more",
+    "options": "Options"
+  },
+  "time": {
+    "now": "now",
+    "seconds-ago_one": "{{count}} second ago",
+    "seconds-ago_other": "{{count}} seconds ago",
+    "minutes-ago_one": "{{count}} minute ago",
+    "minutes-ago_other": "{{count}} minutes ago",
+    "hours-ago_one": "{{count}} hour ago",
+    "hours-ago_other": "{{count}} hours ago",
+    "days-ago_one": "{{count}} day ago",
+    "days-ago_other": "{{count}} days ago",
+    "weeks-ago_one": "{{count}} week ago",
+    "weeks-ago_other": "{{count}} weeks ago",
+    "months-ago_one": "{{count}} month ago",
+    "months-ago_other": "{{count}} months ago",
+    "years-ago_one": "{{count}} year ago",
+    "years-ago_other": "{{count}} years ago"
+  },
+  "components": {
+    "discover-carousel": {
+      "school-card": {
+        "join-title": "Join your school!",
+        "join-subtitle": "Find out if your school was selected for the testing program",
+        "your-school": "Your School",
+        "admin": "YOU ARE THE SCHOOL ADMIN"
+      },
+      "complete-profile-card": {
+        "title": "Complete your profile!",
+        "subtitle": "Add a profile photo to complete your profile and start using SpotLive"
+      }
+    },
+    "picker-modal": {
+      "text": "<0>It is forbidden to upload:</0><1>- Violent, offensive, discriminatory content is not permitted and is subject to account suspension.</1><2>- Sexually explicit material.</2><3>- Contents that incite hatred.</3><4> - Photos manipulated or that steal the identity of others.</4>"
+    },
+    "image-picker": {
+      "select-from-gallery": "Select from gallery",
+      "take-picture": "Take a picture",
+      "unable-to-continue": "Unable to continue",
+      "no-gallery-permission": "We are sorry, permission to access the gallery is required",
+      "no-camera-permission": "We are sorry, permission to access the camera is required",
+      "request-permissions": "Request permissions"
+    }
+  },
+  "snackbar": {
+    "profileUpdated": "Profile updated!"
+  },
+  "welcome-screen": {
+    "title": "Welcome on {{APP_NAME}}",
+    "subtitle": "Are you looking for new friends or do you simply want to expand your social circle by meeting new people? Then SpotLive is for you! With SpotLive, you will no longer have to desperately search for new relationships online, but you will be able to approach people in real life and expand your circle of friends and acquaintances in an easy and fun way.",
+    "start": "Start now!"
+  },
+  "signup-screen": {
+    "title": "Hello!",
+    "subtitle": "Start using spotlive now",
+    "phone-label": "Enter your phone number",
+    "verificationCodeText": "Enter the verification code sent to <1>{{phoneNumber}}</1>",
+    "error": {
+      "generic": "An error occurred",
+      "too-many-requests": "Too many requests, we have suspended all requests from this device. Please try again later.",
+      "phone-number-not-valid": "The phone number is not valid",
+      "wrong-code": "The code is not valid"
+    }
+  },
+  "ban-screen": {
+    "title": "You have been banned",
+    "subtitle": "We are sorry, but you have been banned from using SpotLive. If you think this is a mistake, please contact us"
+  },
+  "wait-for-connection-screen": {
+    "title": "You are offline!",
+    "subtitle": "Please check your internet connection and try again"
+  },
+  "versioning-screens": {
+    "version-invalid": "Obsolete version",
+    "version-invalid-subtitle": "To continue using the application, you must update it to the latest version",
+    "updating": "Updating..."
+  },
+  "delete-account-screen": {
+    "label": "Enter your name to complete the deletion of your account",
+    "name-placeholder": "Username",
+    "next": "Next",
+    "title": "Delete account",
+    "warning": {
+      "title": "ATTENTION! Irreversible operation",
+      "subtitle": "Are you sure you want to delete the account? All data and media content associated with it will be deleted. The action is irreversible"
+    },
+    "success": {
+      "title": "Account deleted",
+      "subtitle": "Your account has been deleted. We are sorry to see you go"
+    }
+  },
+  "profile-screen": {
+    "title": "Your Profile"
+  },
+  "settings-screen": {
+    "title": "Settings",
+    "privacy-policy-label": "Privacy Policy",
+    "logout-label": "Logout",
+    "delete-account-label": "Delete account"
+  },
+  "radar-screen": {
+    "welcome": {
+      "title": "How does it work?",
+      "subtitle": "Discover people close to you and interact with them",
+      "description1": "SpotLive uses various technologies including BLE to make you visible to nearby devices only when we have your consent",
+      "description2": "<0>Background use is limited.</0> We recommend keeping the application open for the best experience"
+    },
+    "get-started-screen": {
+      "ios-position-always": {
+        "title": "Position 'Always'",
+        "subtitle": "We are almost there",
+        "description": "In the settings, enable the use of location by setting it to ALWAYS",
+        "button-label": "Request permission",
+        "button-description": "And enable the 'always' location"
+      },
+      "ios-ble": {
+        "title": "Bluetooth",
+        "subtitle": "We are almost there",
+        "description": "Allow the use of Bluetooth and connection with nearby devices",
+        "description2": "SpotLive requires Bluetooth to work and show you the people who are near you!",
+        "button-label": "Request permissions"
+      },
+      "profile-picture": {
+        "title": "Profile picture",
+        "subtitle": "We are almost there",
+        "description": "Add a profile picture to complete your profile and start using SpotLive",
+        "done": "Done"
+      }
+    },
+    "golive": "Go Live!",
+    "see-other": "See other",
+    "back": "Back",
+    "found-users": "Found users",
+    "report-user": "Report and block user",
+    "add-state-label": "Status",
+    "ig-profile": "Instagram account",
+    "your-state": "Your status",
+    "interactions-label": "Interactions",
+    "see-profile": "Tap on username to see profile",
+    "interact": "Interact",
+    "interaction-sent": "Interaction sent"
+  },
+  "set-instagram-screen": {
+    "title": "Instagram account",
+    "text": "Enter your Instagram username to connect your account",
+    "preview": "Preview"
+  },
+  "set-state-screen": {
+    "title": "Set your status",
+    "placeholder": "Add your status",
+    "description": "The text status will be visible for 24 hours to all people around you"
+  },
+  "interactions-screen": {
+    "title": "Interactions",
+    "interaction-with": "You have spotted {{username}}",
+    "interaction-recived": "{{username}} spotted you!",
+    "see": "See",
+    "no-interactions": "You have no interactions yet",
+    "no-interactions-sub": "This is where you see your interactions with other users",
+    "accepted": "Accepted",
+    "rejected": "Rejected"
+  },
+  "create-review-screen": {
+    "title": "How do you rate your experience?",
+    "subtitle": "Leave a review",
+    "label": "Comment",
+    "submit": "Publish"
+  },
+  "event-join-screen": {
+    "future-date": "You cannot select a future date",
+    "min-age": "You must be at least 13 years old",
+    "max-age": "Select an appropriate date",
+    "birth-date": "Date of birth?",
+    "configure-profile": "Finish configuring your profile",
+    "select-birth-date": "Select birth date"
+  },
+  "bar-code": {
+    "permission-justification": "Access to the camera is required to read QR codes",
+    "missing-permission": "Camera permissions are missing",
+    "go-to-settings": "Go to settings",
+    "scan-join": "Scan the QR code at the entrance",
+    "arrived-at-the-event": "Inform all your matches that you've arrived at the event"
+  },
+  "discover": {
+    "no-matches": "You haven't made any matches yet",
+    "enter": "Enter and go Live",
+    "enter-sub": " to not miss anything",
+    "highlighted": "Highlighted",
+    "show-others": "See others",
+    "subscribed": "You're subscribed",
+    "stats": "Your statistics",
+    "attached-event": "Fixed event"
+  },
+  "event-screen": {
+    "leave-event": "Leave Event",
+    "leave-event-sub": "Are you sure you want to leave the event?",
+    "cancel": "Cancel",
+    "leave": "Leave",
+    "event-not-found": "Event Not Found",
+    "event-not-found-sub": "The event you are looking for is not available",
+    "how-event": "How was the event?",
+    "add-review": "Add a Review",
+    "your-review": "Your Review",
+    "see": "See",
+    "official-event": "Official Event",
+    "verified-event": "Verified Event",
+    "your-ticket": "Your Ticket!",
+    "show-ticket": "Show your ticket at the event entrance",
+    "buy": "Buy",
+    "settings": "Settings",
+    "started": "Already Started",
+    "ended": "Ended",
+    "show-less": "Show Less",
+    "show-all": "Show All",
+    "from": "From",
+    "to-date": "To",
+    "to-time": "To",
+    "age": "Age:",
+    "price": "Price",
+    "followed": "Already Following",
+    "follow": "Follow",
+    "how-it-works": "How It Works?",
+    "tutorial-1": "Join an event to receive updates, inform your friends, leave reviews, and much more.",
+    "tutorial-2": "For some events, you can preview who's attending.",
+    "no-friends": "None of your friends are currently signed up for this event.",
+    "first": "Be the first to join and lead the crowd!",
+    "friends": "Friends Attending:",
+    "info-phone": "For information and reservations",
+    "see-all": "See All",
+    "intrerested-users": "Interested In",
+    "follow-intrested-users": "Follow the event to see who's interested",
+    "unfollow-event-has-request": "You can't unfollow the event because you have a pending invitation request.",
+    "unfollow-event-has-ticket": "You can't unfollow the event because you already have a ticket.",
+    "generic-error": "An error occurred",
+    "unfollowed": "You're no longer following the event"
+  },
+  "event-followed-screen": {
+    "no-events-followed": "You haven't subscribed to any events yet",
+    "find-events-to-follow": "Find an event you'd like to attend and subscribe",
+    "followed": "Followed",
+    "followed-events": "Events you're following"
+  }
+}
