@@ -12921,10 +12921,6 @@ react-native-select-dropdown@^3.4.0:
   resolved "https://registry.yarnpkg.com/react-native-select-dropdown/-/react-native-select-dropdown-3.4.0.tgz#3ce31dc2e5ffa1abf4c47e3297bf0da7144f1ea3"
   integrity sha512-9xK1z4tYpwMxp3hsM0y1+xfqq/JoMh+l7sBsJ81b2eikFwT6ZbndFBqupQXrsQ1akce9hgC/10Nkzj0LjVjeXQ==
 
-"react-native-share@https://github.com/Romoli-Gabriele/react-native-share":
-  version "10.0.2"
-  resolved "https://github.com/Romoli-Gabriele/react-native-share#5c0e9e394eaf777ef5461a225f0045478bdf91cf"
-
 react-native-skeleton-placeholder@^5.2.4:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/react-native-skeleton-placeholder/-/react-native-skeleton-placeholder-5.2.4.tgz#a654fa083ff274a39c763e086f8a850c556d4c95"

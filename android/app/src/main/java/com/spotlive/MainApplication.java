@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.res.Configuration;
 import androidx.annotation.NonNull;
 
-import cl.json.RNSharePackage;
-import cl.json.ShareApplication;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;

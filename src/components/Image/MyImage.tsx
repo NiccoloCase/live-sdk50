@@ -51,10 +51,6 @@ const _MyImage: React.FC<MyImageProps> = ({
         ...(other.style ? (other.style as any) : {}),
       }}
     >
-      {blurhash && Blurhash.isBlurhashValid(blurhash) && (
-        <Blurhash blurhash={blurhash} style={StyleSheet.absoluteFillObject} />
-      )}
-
       <FastImage
         {...other}
         style={[
