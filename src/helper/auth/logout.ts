@@ -2,7 +2,6 @@ import { LogoutDocument } from "../../generated/graphql";
 import { clearCache, client } from "../../graphql";
 import { store } from "../../store";
 import { logoutSocket } from "../socket";
-import auth from "@react-native-firebase/auth";
 
 export const logout = async (skipServer?: boolean) => {
   if (!skipServer) {
@@ -14,7 +13,7 @@ export const logout = async (skipServer?: boolean) => {
   // Elimina credenziali di accesso
   store.getActions().auth.logout();
   // Disconnette da firebase
-  auth().signOut().catch(console.warn);
+  //auth().signOut().catch(console.warn);
   // Elimina la cache graphql
   clearCache();
   // Disconnette dal socket
