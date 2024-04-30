@@ -12,9 +12,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		7048C3A99625863656FBBA73 /* libPods-SpotLive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9349FFB83AEDFE471F210176 /* libPods-SpotLive.a */; };
-		7B574E8D52A54E7CB3B44DE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C08741C861142308AAD1091 /* GoogleService-Info.plist */; };
 		A7227C6F2A5B3548007ADDEB /* NearbyConnections in Frameworks */ = {isa = PBXBuildFile; productRef = A7227C6E2A5B3548007ADDEB /* NearbyConnections */; };
 		A7227C712A5B3548007ADDEB /* NearbyCoreAdapter in Frameworks */ = {isa = PBXBuildFile; productRef = A7227C702A5B3548007ADDEB /* NearbyCoreAdapter */; };
+		A7A361952BE12D7C00CB64F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7A361942BE12D7C00CB64F5 /* GoogleService-Info.plist */; };
 		A7AC69392A0BBC810096E5D9 /* GoogleNearbyMessagesBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AC69382A0BBC810096E5D9 /* GoogleNearbyMessagesBridge.m */; };
 		A7C1F5962A5C9F6A003B03F4 /* Herald in Frameworks */ = {isa = PBXBuildFile; productRef = A7C1F5952A5C9F6A003B03F4 /* Herald */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
@@ -36,7 +36,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C08741C861142308AAD1091 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "SpotLive/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SpotLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SpotLive/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = SpotLive/AppDelegate.mm; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		6C2E3173556A471DD304B334 /* Pods-SpotLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotLive.debug.xcconfig"; path = "Target Support Files/Pods-SpotLive/Pods-SpotLive.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-SpotLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotLive.release.xcconfig"; path = "Target Support Files/Pods-SpotLive/Pods-SpotLive.release.xcconfig"; sourceTree = "<group>"; };
 		9349FFB83AEDFE471F210176 /* libPods-SpotLive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpotLive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7A361942BE12D7C00CB64F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7AC69372A0BBC680096E5D9 /* SpotLive-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpotLive-Bridging-Header.h"; sourceTree = "<group>"; };
 		A7AC69382A0BBC810096E5D9 /* GoogleNearbyMessagesBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleNearbyMessagesBridge.m; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = SpotLive/SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				A7AC69382A0BBC810096E5D9 /* GoogleNearbyMessagesBridge.m */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A7A361942BE12D7C00CB64F5 /* GoogleService-Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				0C08741C861142308AAD1091 /* GoogleService-Info.plist */,
 				B4F5CE295F7C47B89136CB48 /* noop-file.swift */,
 			);
 			name = SpotLive;
@@ -243,9 +243,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
+				A7A361952BE12D7C00CB64F5 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				7B574E8D52A54E7CB3B44DE3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +431,7 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = SpotLive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,7 +463,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U3KBLLT33M;
 				INFOPLIST_FILE = SpotLive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
