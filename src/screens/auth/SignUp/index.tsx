@@ -22,7 +22,6 @@ import { store, useStoreActions } from "../../../store";
 import { PhoneForm } from "./steps/PhoneForm";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { ConfirmationForm } from "./steps/Confirmation";
-import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { UserForm } from "./steps/UserForm";
 import { keys } from "../../../config";
@@ -45,9 +44,7 @@ const TEST_PHONES = [
 ];
 
 export const SignUpScreen = () => {
-  const firebaseConfirm = useRef<null | FirebaseAuthTypes.ConfirmationResult>(
-    null
-  );
+  const firebaseConfirm = useRef<null | any>(null);
 
   const [adminPassword, setAdminPassword] = useState("");
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
@@ -73,7 +70,7 @@ export const SignUpScreen = () => {
     if (user) {
       console.log("onAuthStateChanged - logged");
       // UTENTE REGISTARTO TRAMITE FIREBASE
-      const idTokenResult = await auth().currentUser?.getIdTokenResult();
+      const idTokenResult = {} as any;
       if (idTokenResult?.token) {
         console.log("User JWT: ", idTokenResult?.token);
         // invia il token al server
@@ -98,7 +95,7 @@ export const SignUpScreen = () => {
             // Navigazione
             (navigation.navigate as any)("DiscoverTab");
             // Disconnette da firebase
-            auth().signOut();
+            //auth().signOut();
             // Resetta il form
             reset();
           } else {
@@ -113,19 +110,19 @@ export const SignUpScreen = () => {
             message: t("signup-screen:error.generic"),
           });
 
-          auth().signOut();
+          // auth().signOut();
           return;
         }
       } else {
-        auth().signOut();
+        //auth().signOut();
         return;
       }
     }
   }
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
+    // const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    //return subscriber;
   }, []);
 
   /**
@@ -155,7 +152,7 @@ export const SignUpScreen = () => {
         // Navigazione
         (navigation.navigate as any)("DiscoverTab");
         // Disconnette da firebase
-        auth().signOut();
+        //  auth().signOut();
         // Resetta il form
         reset();
       } else throw new Error();
@@ -212,37 +209,37 @@ export const SignUpScreen = () => {
 
       // INVIA IL MESSAGGIO DI VERIFICA
       console.log("Sending sms to: ", phoneNumber);
-      const confirmation = await auth().signInWithPhoneNumber(
-        phoneNumber,
-        true
-      );
+      // const confirmation = await auth().signInWithPhoneNumber(
+      //   phoneNumber,
+      //   true
+      // );
 
-      const sessionInfo = confirmation.verificationId;
+      // const sessionInfo = confirmation.verificationId;
 
-      console.log("sessionInfo: ", sessionInfo);
+      //   console.log("sessionInfo: ", sessionInfo);
 
       // SUCCESSO
-      if (sessionInfo) {
-        firebaseConfirm.current = confirmation;
+      //if (sessionInfo) {
+      //firebaseConfirm.current = confirmation;
 
-        // // salva la sessione in meoria locale
-        // const sessionObj = {
-        //   sessionInfo,
-        //   phoneNumber,
-        //   date: new Date(),
-        //   sessionId,
-        // };
-        // console.log({ sessionInfo }); // @remove
-        // AsyncStorage.setItem(
-        //   PHONE_AUTH_SESSION_KEY,
-        //   JSON.stringify(sessionObj)
-        // );
+      // // salva la sessione in meoria locale
+      // const sessionObj = {
+      //   sessionInfo,
+      //   phoneNumber,
+      //   date: new Date(),
+      //   sessionId,
+      // };
+      // console.log({ sessionInfo }); // @remove
+      // AsyncStorage.setItem(
+      //   PHONE_AUTH_SESSION_KEY,
+      //   JSON.stringify(sessionObj)
+      // );
 
-        // salva il numero di telefono e l'id della sessione
-        setPhoneNumber(phoneNumber);
-        // prossimo form
-        skip();
-      } else throw new Error();
+      // salva il numero di telefono e l'id della sessione
+      setPhoneNumber(phoneNumber);
+      // prossimo form
+      skip();
+      // } else throw new Error();
     } catch (error) {
       console.warn(error);
       console.log({ string: String(error) });
@@ -331,7 +328,7 @@ export const SignUpScreen = () => {
         postOnlineAuthentication();
         reset();
         // Disconnetti da firebase
-        auth().signOut().catch(console.warn);
+        //  auth().signOut().catch(console.warn);
       } else throw new Error();
     } catch (err) {
       console.warn(err);
