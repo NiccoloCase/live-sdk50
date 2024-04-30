@@ -14,8 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [GMSServices provideAPIKey:@"AIzaSyBcFj4S7WkYDqxXio7RNc1Vu9p3Etkzj0c"]; // add this line using the api key obtained from Google Console
-  // @generated begin @react-native-firebase/app-didFinishLaunchingWithOptions-fallback - expo prebuild (DO NOT MODIFY) sync-ecd111c37e49fdd1ed6354203cd6b1e2a38cccda
   [FIRApp configure]; // FIREBASE
   // @generated end @react-native-firebase/app-didFinishLaunchingWithOptions-fallback
   self.moduleName = @"main";
